@@ -33,7 +33,6 @@ func main() {
 		imagesList = append(imagesList, file.Name())
 	}
 
-
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if strings.HasSuffix(r.URL.Path, "/") && r.URL.Path != "/" {
 			http.Redirect(w, r, strings.TrimSuffix(r.URL.Path, "/"), http.StatusMovedPermanently)
@@ -53,7 +52,7 @@ func main() {
 
 func indexHandler() string {
 	pageHTML := strings.ReplaceAll(appHTML, "{%app%}", indexHTML)
-	pageHTML = strings.ReplaceAll(pageHTML, "{%backgroundImage%}", fmt.Sprintf("/static/images/%s", randomImage())) 
+	pageHTML = strings.ReplaceAll(pageHTML, "{%backgroundImage%}", fmt.Sprintf("/static/images/%s", randomImage()))
 
 	return pageHTML
 }
